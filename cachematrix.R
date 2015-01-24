@@ -1,4 +1,3 @@
-## Put comments here that give an overall description of what your
 ## functions do
 
 #Programming Assignment 2: Lexical Scoping
@@ -13,7 +12,7 @@
 makeCacheMatrix <- function(x = matrix()) {
   # Cache toggle bit initialization
   cacheBit <- NULL
-    
+  
   #set the value of the matrix
   SetMatrix <- function(y) {
     x <<- y
@@ -26,9 +25,10 @@ makeCacheMatrix <- function(x = matrix()) {
   
   # Similarly Get Set methods for inverse 
   SetInverse <- function(Inverse) { cacheBit <<- Inverse }
-  GetInverse <- function() { cacheBit }
+  GetInverse <- function() { cacheBit };
   
-  # return a list. Each named element of the list is a function
+  # Return a list on which each element is a function
+  # Lists - Generic and Dotted Pairs - Functions to construct, coerce and check for both kinds of R lists.
   list(SetMatrix = SetMatrix, GetMatrix = GetMatrix, SetInverse = SetInverse, GetInverse = GetInverse)
 }
 
@@ -44,8 +44,9 @@ cacheSolve <- function(x, ...) {
     message("Getting cached value")
     return(Inverse_Val)
   }
-  data <- x$GetMatrix()
-  Inverse_Val <- solve(data)  ## Calculating the inverse
+  MatrixData <- x$GetMatrix()
+  ##"Solve" - This generic function solves the equation a %*% x = b for x, where b can be either a vector or a matrix.
+  Inverse_Val <- solve(MatrixData)
   x$SetInverse(Inverse_Val)
   Inverse_Val
 }
